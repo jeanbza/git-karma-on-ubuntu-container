@@ -10,8 +10,14 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['my_chrome'],
     singleRun: false,
-    concurrency: Infinity
+    concurrency: Infinity,
+    customLaunchers: {
+      my_chrome: {
+        base: 'Chrome',
+        flags: ['--disable-gpu', '--no-sandbox']
+      }
+    }
   })
 }

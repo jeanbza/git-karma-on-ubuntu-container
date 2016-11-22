@@ -4,14 +4,11 @@ ENV LANG="C.UTF-8"
 
 # install utilities
 RUN apt-get update
+RUN apt-get -y install vim --fix-missing
 RUN apt-get -y install curl --fix-missing
 RUN apt-get -y install wget --fix-missing
 RUN apt-get -y install xvfb --fix-missing # chrome will use this to run headlessly
 RUN apt-get -y install unzip --fix-missing
-
-# install go
-RUN wget -O - 'https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz' | tar xz -C /usr/local/
-ENV PATH="$PATH:/usr/local/go/bin"
 
 # install dbus - chromedriver needs this to talk to google-chrome
 RUN apt-get -y install dbus --fix-missing
@@ -28,3 +25,8 @@ RUN wget -N http://chromedriver.storage.googleapis.com/2.25/chromedriver_linux64
 RUN unzip chromedriver_linux64.zip
 RUN chmod +x chromedriver
 RUN mv -f chromedriver /usr/local/bin/chromedriver
+
+# install node7/npm3
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install -y nodejs --fix-missing
+RUN apt-get install -y build-essential --fix-missing

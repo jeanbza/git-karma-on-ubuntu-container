@@ -8,10 +8,11 @@
 
     ```
     service dbus restart
+    xvfb-run chromedriver &
     cd /karma
     rm -rf node_modules
     npm install
-    xvfb-run npm test
+    npm test
     ```
 
 # Debugging

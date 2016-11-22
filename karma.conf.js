@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = function (config) {
   config.set({
     basePath: '',
@@ -10,14 +12,8 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['my_chrome'],
+    browsers: [path.join(__dirname, 'chrome_script.sh')],
     singleRun: false,
-    concurrency: Infinity,
-    customLaunchers: {
-      my_chrome: {
-        base: 'Chrome',
-        flags: ['--disable-gpu', '--no-sandbox']
-      }
-    }
+    concurrency: Infinity
   })
 }

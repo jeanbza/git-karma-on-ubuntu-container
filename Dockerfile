@@ -9,6 +9,7 @@ RUN apt-get -y install curl --fix-missing
 RUN apt-get -y install wget --fix-missing
 RUN apt-get -y install xvfb --fix-missing # chrome will use this to run headlessly
 RUN apt-get -y install unzip --fix-missing
+RUN apt-get -y install jq --fix-missing
 
 # install dbus - chromedriver needs this to talk to google-chrome
 RUN apt-get -y install dbus --fix-missing

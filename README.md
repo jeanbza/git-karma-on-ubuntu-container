@@ -10,7 +10,7 @@
 1. `npm install`
 1. `npm test`
 1. `docker build . -t karma-docker`
-1. `docker run -it -v $(echo pwd):/karma karma-docker`
+1. `docker run -it -v ~/workspace/git-karma-on-ubuntu-container:/karma karma-docker`
 1. Run in container:
 
     ```
@@ -19,7 +19,7 @@
     cd /karma
     rm -rf node_modules
     npm install
-    npm test
+    TEST_ENV=CI npm test
     ```
 
 # What are the problems this repo is trying to solve?

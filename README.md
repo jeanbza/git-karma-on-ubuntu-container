@@ -1,9 +1,16 @@
 # karma-in-docker
 
+# Run tests locally
+
+1. `npm install`
+1. `npm test`
+
+# Run tests in docker
+
 1. `npm install`
 1. `npm test`
 1. `docker build . -t karma-docker`
-1. `docker run -it -v $(echo /Users/pivotal/workspace/karma-in-docker):/karma karma-docker`
+1. `docker run -it -v $(echo pwd):/karma karma-docker`
 1. Run in container:
 
     ```
@@ -15,8 +22,9 @@
     npm test
     ```
 
-# Why are we doing this?
+# What are the problems this repo is trying to solve?
 
+- Provide a basic karma + babel + react example that runs on docker containers
 - The [karma-chrome-launcher](https://github.com/karma-runner/karma-chrome-launcher) hangs trying to start google-chrome (it does so directly; not through `chromedriver`). We don't know why this is - even with maximum logging (see below) we get no useful information
 - Running `google-chrome` through the [karma-script-launcher](https://github.com/karma-runner/karma-script-launcher) hangs - again, we were unable to find out why. We think this and the [karma-chrome-launcher](https://github.com/karma-runner/karma-chrome-launcher) is related to Karma's use of [child_process.spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) [[1]](https://github.com/karma-runner/karma/blob/8e2cfab5e97033a17edbde412485d682d153d5d1/lib/launchers/process.js#L63) [[2]](https://github.com/karma-runner/karma/blob/8e2cfab5e97033a17edbde412485d682d153d5d1/lib/launchers/process.js#L141) [[3]](https://github.com/karma-runner/karma/blob/8e2cfab5e97033a17edbde412485d682d153d5d1/lib/launchers/process.js#L138)
 - [We know that chromedriver + acceptance tests work headlessly in a very similar container](http://engineering.pivotal.io/post/headless-ui-testing-with-go-agouti-and-chrome/) (again - the only different we see is that [karma-chrome-launcher](https://github.com/karma-runner/karma-chrome-launcher) and co get run as a separate process via [child_process.spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options))

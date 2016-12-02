@@ -4,7 +4,6 @@ ENV LANG="C.UTF-8"
 
 # install utilities
 RUN apt-get update
-RUN apt-get -y install vim --fix-missing
 RUN apt-get -y install curl --fix-missing
 RUN apt-get -y install wget --fix-missing
 RUN apt-get -y install xvfb --fix-missing # chrome will use this to run headlessly

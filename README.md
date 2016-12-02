@@ -1,5 +1,11 @@
 # karma-in-docker
 
+# Run locally
+
+1. `npm install`
+1. `./node_modules/.bin/webpack`
+1. `open index.html`
+
 # Run tests locally
 
 1. `npm install`
